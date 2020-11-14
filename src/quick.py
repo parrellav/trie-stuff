@@ -48,7 +48,6 @@ def quick_sort(lst, left, right):
     :param left: Left index of sub-list
     :param right: right-index of sub-list
     """
-
     if left < right:
         # pi is where the pivot is at
         pi = partition(lst, left, right)

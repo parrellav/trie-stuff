@@ -3,6 +3,7 @@ def merge_sort(lst):
     Merge sort function
     :param lst: lst of unsorted integers
     """
+    bob = 'joe'
     if len(lst) > 1:
         mid = len(lst) // 2  # Mid of the list
         left = lst[:mid]  # Dividing the list elements into 2 halves

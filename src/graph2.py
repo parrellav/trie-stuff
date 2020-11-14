@@ -39,22 +39,36 @@ def bfs(graph, start):
     return result
 
 
-def dfs(graph, start):
-    result = ''
-    queue = []
-    seen = [False] * graph.vertexes
-    queue.append(start)
-    while queue:
-        vertex = queue.pop()
-        if not seen[vertex]:
-            result += str(vertex)
-            seen[vertex] = True
-        if vertex in graph.graph_dict:
-            current = graph.graph_dict[vertex]
-            for neighbor in current:
-                queue.append(neighbor)
-    return result
+# def dfs(graph, start):
+#     result = ''
+#     queue = []
+#     seen = [False] * graph.vertexes
+#     queue.append(start)
+#     while queue:
+#         vertex = queue.pop()
+#         if not seen[vertex]:
+#             result += str(vertex)
+#             seen[vertex] = True
+#         if vertex in graph.graph_dict:
+#             current = graph.graph_dict[vertex]
+#             for neighbor in current:
+#                 queue.append(neighbor)
+#     return result
 
+def dfs_recur(graph, start, seen, result):
+    if start in graph.graph_dict:
+        seen[start] = True
+        result.append(start)
+        neighbors = graph.graph_dict[start]
+        for neighbor in neighbors:
+            dfs_recur(graph, neighbor, seen, result)
+
+
+def dfs(graph, start):
+    result = []
+    dfs_recur(graph, start, [False] * graph.vertexes, result)
+    str_version = [str(int) for int in result]
+    return ''.join(str_version)
 
 def _find_all_paths_recursive(graph, source, destination, this_path, accum):
     this_path.append(source)

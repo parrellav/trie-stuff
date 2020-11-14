@@ -15,14 +15,16 @@ class TestArrays(unittest.TestCase):
     def test_graph_bfs(self):
         g = self.build_graph()
 
-        allowed_results = ['02143', '02134']
-        self.assertIn(bfs(g, 0), allowed_results)
+        allowed_results = ['02143', '02134', '01234']
+        actual = bfs(g, 0)
+        self.assertIn(actual, allowed_results)
 
     def test_graph_dfs(self):
         g = self.build_graph()
 
         allowed_results = ['02143', '01342']
-        self.assertIn(dfs(g, 0), allowed_results)
+        actual = dfs(g, 0)
+        self.assertIn(actual, allowed_results)
 
     # def test_number_of_nodes(self):
     #     g = self.build_graph()

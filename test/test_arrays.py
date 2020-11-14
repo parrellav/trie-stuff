@@ -50,3 +50,41 @@ class TestArrays(unittest.TestCase):
         input = [4, 0, 3, 1]
         output = 2
         self.assertEqual(output, find_missing_number(input))
+
+    def test_find_subsets(self):
+        input = [1, 3]
+        expected = [[], [1], [3], [1,3]]
+        actual = find_subsets(input)
+        self.assertListEqual(expected, actual)
+        input = [1, 5, 3]
+        expected = [[], [1], [5], [1,5], [3], [1,3], [5,3], [1,5,3]]
+        actual = find_subsets(input)
+        self.assertListEqual(expected, actual)
+
+    def test_permutations(self):
+        input = [1,3,5]
+        expected = [1,3,5], [1,5,3], [3,1,5], [3,5,1], [5,1,3], [5,3,1]
+        actual = find_permutations(input)
+        containsAll = True
+        for item in actual:
+            if item not in expected:
+                containsAll = False
+                break
+        self.assertTrue(containsAll)
+
+    def test_find_letter_case_string_permutations(self):
+        input = 'ab7c'
+        expected = ["ab7c", "Ab7c", "aB7c", "AB7c", "ab7C", "Ab7C", "aB7C", "AB7C"]
+        actual = find_letter_case_string_permutations(input)
+        containsAll = True
+        for item in actual:
+            if item not in expected:
+                containsAll = False
+                break
+        self.assertTrue(containsAll)
+
+    def test_find_kth_smallest(self):
+        lsts = [[2, 6, 8], [3, 6, 7], [1, 3, 4]]
+        expected = 4
+        actual = find_Kth_smallest(lsts, 5)
+        self.assertEqual(expected, actual)

@@ -1,4 +1,7 @@
 import math
+import copy
+from collections import deque
+from heapq import *
 
 def findMaxLenSubSeq(arr):
     arr_as_set = set(arr)
@@ -135,3 +138,70 @@ def find_missing_number(nums):
             i += 1
     print('hi')
     return -1
+
+
+def find_subsets(nums):
+    subsets = []
+    subsets.append([])
+    for num in nums:
+        clones = copy.deepcopy(subsets)
+        for clone in clones:
+            clone.append(num)
+            subsets.append(clone)
+    return subsets
+
+
+def find_permutations(nums):
+    num_length = len(nums)
+    result = []
+    perms = deque()
+    perms.append([])
+    for num in nums:
+        n = len(perms)
+        for _ in range(n):
+            oldperm = list(perms.popleft())
+            for i in range(len(oldperm) + 1):
+                newPerm = list(oldperm)
+                newPerm.insert(i, num)
+                if len(newPerm) == num_length:
+                    result.append(newPerm)
+                else:
+                    perms.append(newPerm)
+    return result
+
+def find_letter_case_string_permutations(str):
+    permutations = []
+    permutations.append(str)
+    for chr in str:
+        if chr.isalpha():
+            perm_length = len(permutations)
+            for i in range(perm_length):
+                newPerm = list(permutations[i])
+                j = 0
+                while newPerm[j] is not chr:
+                    j +=1
+                newPerm[j] = newPerm[j].swapcase()
+                permutations.append(''.join(newPerm))
+
+
+    return permutations
+
+def find_Kth_smallest(lists, k):
+    minHeap = []
+
+    for i in range(len(lists)):
+        tuple = (lists[i][0], 0, lists[i])
+        heappush(minHeap, tuple)
+
+    # take the smallest(top) element form the min heap, if the running count is equal to k return the number
+    numberCount, number = 0, 0
+    while minHeap:
+        number, i, list = heappop(minHeap)
+        numberCount += 1
+        if numberCount == k:
+            break
+        # if the array of the top element has more elements, add the next element to the heap
+        if len(list) > i+1:
+            heappush(minHeap, (list[i+1], i+1, list))
+
+    return number

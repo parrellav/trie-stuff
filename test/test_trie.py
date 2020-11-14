@@ -9,15 +9,15 @@ class TestTrie(unittest.TestCase):
     # def tearDown(self):
 
     def test_longest_common(self):
-        # keys = [
-        #     "code", "coder", "coding", "codable", "codec", "codecs", "coded",
-        #     "codeless", "codependence", "codependency", "codependent",
-        #     "codependents", "codes", "codesign", "codesigned", "codeveloped",
-        #     "codeveloper", "codex", "codify", "codiscovered", "codrive", "codability"
-        # ]
         keys = [
-            "code", "coder", "bob"
+            "code", "coder", "coding", "codable", "codec", "codecs", "coded",
+            "codeless", "codependence", "codependency", "codependent",
+            "codependents", "codes", "codesign", "codesigned", "codeveloped",
+            "codeveloper", "codex", "codify", "codiscovered", "codrive", "codability"
         ]
+        # keys = [
+        #     "code", "coder", "bob"
+        # ]
         trie = Trie()
         for key in keys:
             insert(trie, key)
