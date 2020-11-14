@@ -3,7 +3,7 @@ import copy
 def print_all_braces_rec(n, left_count, right_count, output, result):
 
     if left_count >= n and right_count >= n:
-        result.append(copy.copy(output));
+        result.append(copy.copy(output))
 
     if left_count < n:
         output += '{'
