@@ -3,7 +3,7 @@ import copy
 from src.merge import *
 
 
-class TestQuick(unittest.TestCase):
+class TestMerge(unittest.TestCase):
 
     def test_merge(self):
         lst = [3, 2, 1, 5, 4]
